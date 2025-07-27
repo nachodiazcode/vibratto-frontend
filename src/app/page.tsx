@@ -1,46 +1,79 @@
 "use client";
 
+import Link from "next/link";
 import {
   Box,
   Button,
-  Container,
   Typography,
+  Stack,
   Card,
   CardContent,
-  Stack,
+  Container,
 } from "@mui/material";
-import { Star } from "@mui/icons-material";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import Star from "@mui/icons-material/Star";
 
 export default function HomePage() {
   return (
-    <Box className="min-h-screen bg-gradient-to-br from-[#0F0C24] to-[#15162B] text-white relative overflow-hidden">
-      {/* Glow de fondo */}
+    <Box
+      className="min-h-screen text-white relative overflow-hidden"
+      sx={{
+        background: "radial-gradient(ellipse at bottom, #0e1a2b, #1a2c44, #263d58)",
+      }}
+    >
+      {/* 🌸 Blobs Pastel */}
       <Box
         sx={{
           position: "absolute",
           top: "10%",
-          right: { xs: "5%", md: "10%" },
+          left: "5%",
+          width: 280,
+          height: 280,
+          background: "radial-gradient(circle, rgba(255,192,203,0.35), transparent)",
+          borderRadius: "50%",
+          filter: "blur(80px)",
+          zIndex: 0,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "5%",
+          right: "10%",
+          width: 240,
+          height: 240,
+          background: "radial-gradient(circle, rgba(173,216,230,0.3), transparent)",
+          borderRadius: "50%",
+          filter: "blur(90px)",
+          zIndex: 0,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          top: "45%",
+          left: "50%",
+          transform: "translateX(-50%)",
           width: 320,
           height: 320,
-          background: "radial-gradient(circle, #6366f1aa, transparent 70%)",
+          background: "radial-gradient(circle, rgba(221,160,221,0.25), transparent)",
           borderRadius: "50%",
           filter: "blur(90px)",
           zIndex: 0,
         }}
       />
 
-      {/* Hero */}
-      <Container maxWidth="lg" className="pb-0 px-6 relative z-10">
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        {/* Hero principal */}
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={10}
           alignItems="center"
           justifyContent="space-between"
         >
-          {/* Texto y botones */}
+          {/* Texto principal */}
           <Box flex={1}>
             <Typography
               variant="h2"
@@ -50,7 +83,7 @@ export default function HomePage() {
                 fontWeight: 800,
                 fontFamily: "'Inter', sans-serif",
                 lineHeight: 1.2,
-                background: "linear-gradient(to right, #ffffff, #c7d2fe)",
+                background: "linear-gradient(to right, #e0f2ff, #c7d2fe)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -62,14 +95,14 @@ export default function HomePage() {
               variant="body1"
               sx={{
                 textAlign: { xs: "center", md: "left" },
-                color: "#cbd5e1",
+                color: "#e0e7ff",
                 fontSize: "1.125rem",
                 maxWidth: "40rem",
                 lineHeight: 1.7,
                 mt: 4,
               }}
             >
-              Conecta con artistas, descubre talentos, colabora en proyectos y haz que tu música suene. Vibratto es más que una app: es tu comunidad creativa.
+              Conecta con artistas adorables, descubre talentos brillantes y crea música en comunidad con vibras pastel y mucha ternura.
             </Typography>
 
             <Stack
@@ -78,27 +111,30 @@ export default function HomePage() {
               justifyContent={{ xs: "center", md: "flex-start" }}
               sx={{ mt: 5 }}
             >
-              <Button
-                variant="contained"
-                size="large"
-                sx={{
-                  bgcolor: "#6366f1",
-                  borderRadius: "999px",
-                  px: 5,
-                  py: 1.5,
-                  fontWeight: 600,
-                  fontSize: "1rem",
-                  textTransform: "none",
-                  animation: "pulse 2.5s infinite",
-                  boxShadow: "0 0 24px rgba(99,102,241,0.4)",
-                  "&:hover": {
-                    bgcolor: "#4f46e5",
-                    boxShadow: "0 0 32px rgba(99,102,241,0.6)",
-                  },
-                }}
-              >
-                🚀 Empezar ahora
-              </Button>
+              <Link href="/login" passHref>
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    bgcolor: "#a78bfa",
+                    borderRadius: "999px",
+                    px: 5,
+                    py: 1.5,
+                    fontWeight: 600,
+                    fontSize: "1rem",
+                    textTransform: "none",
+                    animation: "pulse 2.5s infinite",
+                    boxShadow: "0 0 24px rgba(167,139,250,0.4)",
+                    "&:hover": {
+                      bgcolor: "#8b5cf6",
+                      boxShadow: "0 0 32px rgba(167,139,250,0.6)",
+                    },
+                  }}
+                >
+                  Empezar ahora
+                </Button>
+              </Link>
+
               <Button
                 variant="outlined"
                 size="large"
@@ -116,17 +152,19 @@ export default function HomePage() {
                   },
                 }}
               >
-                🌐 Explorar artistas
+                Explorar artistas
               </Button>
             </Stack>
 
-            <Box className="flex items-center gap-1 text-sm text-slate-400 pt-10">
+            <Box className="flex items-center gap-1 text-sm text-slate-300 pt-10">
               {Array(5)
                 .fill(null)
                 .map((_, i) => (
                   <Star key={i} fontSize="small" sx={{ color: "#facc15" }} />
                 ))}
-              <span className="ml-2">10.000+ músicos ya confían en Vibratto</span>
+              <span className="ml-2">
+                10.000+ músicos ya confían en Vibratto
+              </span>
             </Box>
           </Box>
 
@@ -142,7 +180,7 @@ export default function HomePage() {
           >
             <img
               src="/personajes/dari.png"
-              alt="Música anime"
+              alt="Ilustración kawaii"
               style={{
                 maxWidth: "100%",
                 height: "auto",
@@ -151,21 +189,20 @@ export default function HomePage() {
             />
           </Box>
         </Stack>
-      </Container>
 
-      {/* Funciones */}
-      <Container maxWidth="lg" className="pb-28 px-2">
+        {/* Cards Funcionalidades */}
         <Typography
           variant="h4"
           align="center"
           sx={{
             fontWeight: 700,
             fontSize: { xs: "2rem", md: "2.5rem" },
-            mb: 8,
+            my: 10,
           }}
         >
-          Qué puedes hacer en Vibratto
+          ¿Qué puedes hacer en Vibratto?
         </Typography>
+
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={6}
@@ -194,15 +231,15 @@ export default function HomePage() {
               sx={{
                 flex: 1,
                 borderRadius: "1rem",
-                backgroundColor: "#1a1c35",
-                border: "1px solid #3c3f66",
+                backgroundColor: "rgba(255, 255, 255, 0.05)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.08)",
                 color: "#fff",
                 transition: "all 0.35s ease",
-                boxShadow: "0 0 0 rgba(0,0,0,0)",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
                 "&:hover": {
                   transform: "translateY(-6px) scale(1.02)",
-                  boxShadow: "0 0 12px 2px rgba(99,102,241,0.25)",
-                  border: "1px solid #6366f1",
+                  boxShadow: "0 0 24px 4px rgba(255,255,255,0.1)",
                 },
               }}
             >
@@ -214,15 +251,15 @@ export default function HomePage() {
                 >
                   {card.title}
                 </Typography>
-                <Typography sx={{ color: "#cbd5e1" }}>{card.desc}</Typography>
+                <Typography sx={{ color: "#e2e8f0" }}>{card.desc}</Typography>
               </CardContent>
             </Card>
           ))}
         </Stack>
       </Container>
 
-      {/* CTA Final */}
-      <Box className="text-center pt-20 pb-32 bg-[#0f172a] border-t border-white/10 px-6">
+      {/* Llamado final */}
+      <Box className="text-center pt-20 pb-32 bg-[#1e1b3a] border-t border-white/10 px-6 mt-10">
         <Typography
           variant="h4"
           sx={{
@@ -233,14 +270,14 @@ export default function HomePage() {
         >
           ¿Listo para llevar tu música al siguiente nivel?
         </Typography>
-        <Typography sx={{ color: "#94a3b8", mb: 8 }}>
+        <Typography sx={{ color: "#cbd5e1", mb: 8 }}>
           Únete gratis, explora artistas y haz match musical con quien sueñas colaborar.
         </Typography>
         <Button
           variant="contained"
           size="large"
           sx={{
-            bgcolor: "#6366f1",
+            bgcolor: "#a78bfa",
             borderRadius: "999px",
             px: 7,
             py: 1.8,
@@ -253,22 +290,29 @@ export default function HomePage() {
         </Button>
       </Box>
 
+      {/* Animaciones */}
       <style jsx global>{`
         @keyframes floatY {
-          0% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0); }
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+          100% {
+            transform: translateY(0);
+          }
         }
 
         @keyframes pulse {
           0% {
-            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+            box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.7);
           }
           70% {
-            box-shadow: 0 0 0 20px rgba(99, 102, 241, 0);
+            box-shadow: 0 0 0 20px rgba(167, 139, 250, 0);
           }
           100% {
-            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
           }
         }
       `}</style>
