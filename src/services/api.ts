@@ -1,8 +1,11 @@
 // services/api.ts
 import axios from "axios";
 
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "https://vibratto-api.netlify.app/api";
+
 const instance = axios.create({
-  baseURL: "http://localhost:3950/api", // Asegúrate de que coincida con tu backend
+  baseURL: API_BASE_URL,
   withCredentials: true,
 });
 
