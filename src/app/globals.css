@@ -23,3 +23,25 @@ body {
   color: var(--foreground);
   font-family: sans-serif;
 }
+
+/* Escala fluida de la interfaz: Tailwind usa rem, así que cambiar el tamaño
+   raíz compacta todo en laptops (MacBook 1440, Windows 1366/1536) y agranda un
+   poco en monitores muy grandes. Móvil y tablet no se tocan. */
+@media (min-width: 1024px) and (max-width: 1535px) {
+  html { font-size: 14.5px; }
+}
+@media (min-width: 1536px) and (max-width: 1919px) {
+  html { font-size: 15px; }
+}
+@media (min-width: 2400px) {
+  html { font-size: 17.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

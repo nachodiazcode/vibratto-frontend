@@ -83,7 +83,7 @@ function SidebarContent({
       <Link
         href="/home"
         onClick={onNavigate}
-        className="mb-6 flex items-center gap-3 px-2 text-sm font-semibold tracking-[0.22em] text-white/90"
+        className="mb-4 flex items-center gap-3 px-2 text-sm font-semibold tracking-[0.22em] text-white/90 focus-visible:outline-2 focus-visible:outline-fuchsia-300"
       >
         <span className="grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-white/10 shadow-[0_0_28px_rgba(217,70,239,.22)]">
           <Music2 size={20} className="text-fuchsia-300" />
@@ -91,13 +91,13 @@ function SidebarContent({
         VIBRATTO
       </Link>
 
-      <nav className="flex-1 space-y-6 overflow-y-auto pr-1">
+      <nav aria-label="Principal" className="flex-1 space-y-4 overflow-y-auto pr-1 [scrollbar-width:thin]">
         {NAV_GROUPS.map((group) => (
           <div key={group.title}>
-            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/35">
+            <p className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-white/40">
               {group.title}
             </p>
-            <ul className="space-y-1">
+            <ul className="space-y-0.5">
               {group.items.map(({ label, icon: Icon, href }) => {
                 const active = pathname === href;
                 return (
@@ -105,14 +105,15 @@ function SidebarContent({
                     <Link
                       href={href}
                       onClick={onNavigate}
-                      className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${
+                      aria-current={active ? "page" : undefined}
+                      className={`group flex items-center gap-3 rounded-xl px-3 py-2 text-[13.5px] transition focus-visible:outline-2 focus-visible:outline-fuchsia-300 ${
                         active
                           ? "bg-gradient-to-r from-fuchsia-500/25 to-cyan-400/10 text-white shadow-[inset_0_0_0_1px_rgba(240,171,252,.25)]"
                           : "text-white/65 hover:bg-white/[0.06] hover:text-white"
                       }`}
                     >
                       <Icon
-                        size={18}
+                        size={17}
                         className={active ? "text-fuchsia-300" : "text-white/50 group-hover:text-cyan-200"}
                       />
                       {label}
@@ -125,8 +126,8 @@ function SidebarContent({
         ))}
       </nav>
 
-      <div className="mt-4 border-t border-white/10 pt-4">
-        <div className="mb-3 flex items-center gap-3 px-2">
+      <div className="mt-3 border-t border-white/10 pt-3">
+        <div className="mb-2 flex items-center gap-3 px-2">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-fuchsia-500 to-cyan-400 text-sm font-bold text-slate-950">
             {(user?.nombre?.[0] || "I").toUpperCase()}
           </span>
@@ -137,9 +138,9 @@ function SidebarContent({
         </div>
         <button
           onClick={onLogout}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-rose-300/90 transition hover:bg-rose-500/10"
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-[13.5px] text-rose-300/90 transition hover:bg-rose-500/10 focus-visible:outline-2 focus-visible:outline-rose-300"
         >
-          <LogOut size={18} />
+          <LogOut size={17} />
           {user ? "Cerrar sesión" : "Salir"}
         </button>
       </div>
@@ -184,7 +185,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </div>
 
       {/* Sidebar desktop */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 border-r border-white/10 bg-white/[0.035] p-5 backdrop-blur-2xl lg:block">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 border-r border-white/10 bg-white/[0.035] p-4 backdrop-blur-2xl lg:block">
         <SidebarContent user={user} pathname={pathname} onLogout={logout} />
       </aside>
 
@@ -241,8 +242,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
         )}
       </AnimatePresence>
 
-      <main className="relative z-10 px-4 pb-28 pt-6 sm:px-8 lg:ml-64 lg:px-12 lg:pb-12 lg:pt-10">
-        <div className="mx-auto w-full max-w-6xl">{children}</div>
+      <main className="relative z-10 px-4 pb-28 pt-5 sm:px-6 lg:ml-60 lg:px-8 lg:pb-10 lg:pt-7 xl:px-10">
+        <div className="mx-auto w-full max-w-[1360px]">{children}</div>
       </main>
 
       {/* Navegación inferior móvil */}
