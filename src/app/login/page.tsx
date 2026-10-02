@@ -16,7 +16,7 @@ import {
   Music2,
   Sparkles,
 } from "lucide-react";
-import { FcGoogle } from "react-icons/fc";
+import GoogleSignInButton from "@/components/GoogleSignInButton";
 import api from "@/services/api";
 
 const particles = [
@@ -329,14 +329,14 @@ export default function LoginPage() {
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/15" />
             </div>
 
-            <button
-              type="button"
-              onClick={() => alert("Google login")}
-              className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.055] py-3.5 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.09]"
-            >
-              <FcGoogle size={22} />
-              Google
-            </button>
+            <GoogleSignInButton
+              onSuccess={(token, user) => {
+                localStorage.setItem("token", token);
+                localStorage.setItem("user", JSON.stringify(user));
+                router.push("/home");
+              }}
+              onError={setError}
+            />
 
             <div className="mt-7 flex flex-col items-center justify-between gap-4 border-t border-white/[0.07] pt-7 text-sm sm:flex-row">
               <p className="text-slate-500">
