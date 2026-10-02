@@ -85,7 +85,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#070612] px-4 py-6 text-white sm:px-7 lg:flex lg:items-center lg:py-8">
+    <main className="relative min-h-screen overflow-hidden bg-[#070612] px-4 py-6 text-white sm:px-7 lg:flex lg:items-center lg:py-6">
       <div className="pointer-events-none absolute inset-0">
         <motion.div
           className="absolute -left-32 -top-28 h-[30rem] w-[30rem] rounded-full bg-fuchsia-600/25 blur-[120px]"
@@ -135,7 +135,7 @@ export default function LoginPage() {
           initial={{ opacity: 0, x: -28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative hidden min-h-[760px] overflow-hidden lg:block"
+          className="relative hidden min-h-[600px] overflow-hidden lg:block"
         >
           <Image
             src="/personajes/nancy.png"
@@ -167,8 +167,8 @@ export default function LoginPage() {
             <Headphones size={24} />
           </motion.div>
 
-          <div className="absolute inset-x-0 bottom-0 p-10 xl:p-14">
-            <div className="mb-7 flex h-12 items-end gap-1.5" aria-hidden="true">
+          <div className="absolute inset-x-0 bottom-0 p-8 xl:p-10">
+            <div className="mb-5 flex h-10 items-end gap-1.5" aria-hidden="true">
               {equalizerBars.map((height, index) => (
                 <motion.span
                   key={`${height}-${index}`}
@@ -187,13 +187,13 @@ export default function LoginPage() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-cyan-200/80">
               La comunidad vibra contigo
             </p>
-            <h1 className="max-w-xl text-5xl font-black leading-[1.02] tracking-[-0.045em] xl:text-6xl">
+            <h1 className="max-w-xl text-4xl font-black leading-[1.04] tracking-[-0.04em] xl:text-5xl">
               Donde tu música
               <span className="block bg-gradient-to-r from-fuchsia-300 via-violet-300 to-cyan-200 bg-clip-text text-transparent">
                 encuentra escenario.
               </span>
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-200/75">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-200/75 xl:text-base">
               Descubre artistas, crea colaboraciones y convierte una idea en la próxima canción que todos quieran escuchar.
             </p>
           </div>
@@ -203,24 +203,24 @@ export default function LoginPage() {
           initial={{ opacity: 0, x: 28 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex min-h-[760px] items-center px-6 py-24 sm:px-12 lg:px-14 xl:px-20"
+          className="relative flex items-center px-6 py-24 sm:px-12 lg:min-h-[600px] lg:px-12 lg:py-10 xl:px-16"
         >
           <div className="mx-auto w-full max-w-md">
-            <div className="mb-9">
+            <div className="mb-6">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="mb-5 inline-flex items-center gap-2 rounded-full border border-fuchsia-300/20 bg-fuchsia-300/10 px-3 py-1.5 text-xs font-semibold text-fuchsia-100"
+                className="mb-4 inline-flex items-center gap-2 rounded-full border border-fuchsia-300/20 bg-fuchsia-300/10 px-3 py-1.5 text-xs font-semibold text-fuchsia-100"
               >
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-fuchsia-300 shadow-[0_0_10px_2px_rgba(240,171,252,.65)]" />
                 Tu escenario te espera
               </motion.div>
-              <h2 className="text-4xl font-black tracking-[-0.035em] sm:text-5xl">
+              <h2 className="text-3xl font-black tracking-[-0.035em] sm:text-4xl">
                 Qué bueno
                 <span className="block text-white/45">tenerte de vuelta.</span>
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-slate-400">
                 Entra a tu cuenta y vuelve a conectar con la música.
               </p>
             </div>
@@ -239,9 +239,9 @@ export default function LoginPage() {
               )}
             </AnimatePresence>
 
-            <form className="space-y-5" onSubmit={handleLogin}>
+            <form className="space-y-4" onSubmit={handleLogin}>
               <label className="block">
-                <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                   Correo electrónico
                 </span>
                 <span className="group flex items-center rounded-2xl border border-white/10 bg-white/[0.055] px-4 transition duration-300 focus-within:border-fuchsia-300/60 focus-within:bg-white/[0.08] focus-within:shadow-[0_0_30px_rgba(217,70,239,.12)]">
@@ -252,14 +252,14 @@ export default function LoginPage() {
                     onChange={(event) => setEmail(event.target.value)}
                     placeholder="tu@correo.com"
                     autoComplete="email"
-                    className="w-full bg-transparent px-3 py-4 text-[15px] text-white outline-none placeholder:text-slate-600"
+                    className="w-full bg-transparent px-3 py-3 text-sm text-white outline-none placeholder:text-slate-600"
                     required
                   />
                 </span>
               </label>
 
               <label className="block">
-                <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                   Contraseña
                 </span>
                 <span className="group flex items-center rounded-2xl border border-white/10 bg-white/[0.055] px-4 transition duration-300 focus-within:border-cyan-300/60 focus-within:bg-white/[0.08] focus-within:shadow-[0_0_30px_rgba(34,211,238,.1)]">
@@ -270,7 +270,7 @@ export default function LoginPage() {
                     onChange={(event) => setPassword(event.target.value)}
                     placeholder="Tu contraseña"
                     autoComplete="current-password"
-                    className="w-full bg-transparent px-3 py-4 text-[15px] text-white outline-none placeholder:text-slate-600"
+                    className="w-full bg-transparent px-3 py-3 text-sm text-white outline-none placeholder:text-slate-600"
                     required
                   />
                   <button
@@ -302,7 +302,7 @@ export default function LoginPage() {
                 disabled={isLoading}
                 whileHover={isLoading ? undefined : { scale: 1.015 }}
                 whileTap={isLoading ? undefined : { scale: 0.985 }}
-                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-5 py-4 font-bold shadow-[0_15px_45px_rgba(139,92,246,.28)] transition disabled:cursor-wait disabled:opacity-70"
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500 px-5 py-3.5 font-bold shadow-[0_15px_45px_rgba(139,92,246,.28)] transition disabled:cursor-wait disabled:opacity-70"
               >
                 <motion.span
                   className="absolute inset-y-0 -left-1/3 w-1/3 skew-x-[-18deg] bg-white/25 blur-md"
@@ -323,7 +323,7 @@ export default function LoginPage() {
               </motion.button>
             </form>
 
-            <div className="my-7 flex items-center gap-4">
+            <div className="my-5 flex items-center gap-4">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-white/15" />
               <span className="text-xs uppercase tracking-[0.2em] text-slate-600">o continúa con</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/15" />
@@ -338,7 +338,7 @@ export default function LoginPage() {
               onError={setError}
             />
 
-            <div className="mt-7 flex flex-col items-center justify-between gap-4 border-t border-white/[0.07] pt-7 text-sm sm:flex-row">
+            <div className="mt-5 flex flex-col items-center justify-between gap-3 border-t border-white/[0.07] pt-5 text-sm sm:flex-row">
               <p className="text-slate-500">
                 ¿Aún no tienes cuenta?{" "}
                 <Link href="/register" className="font-semibold text-fuchsia-200 transition hover:text-fuchsia-100">
